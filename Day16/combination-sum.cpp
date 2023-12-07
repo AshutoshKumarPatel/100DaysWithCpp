@@ -1,19 +1,20 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+using namespace std;
 
 class Solution {
 public:
-    std::vector<std::vector<int>> combinationSum(std::vector<int>& candidates, int target) {
-        std::sort(candidates.begin(), candidates.end());
-        std::vector<std::vector<int>> result;
-        std::vector<int> path;
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        sort(candidates.begin(), candidates.end());
+        vector<vector<int>> result;
+        vector<int> path;
         combinationSumHelper(candidates, target, 0, path, result);
         return result;
     }
 
 private:
-    void combinationSumHelper(std::vector<int>& candidates, int target, int start, std::vector<int>& path, std::vector<std::vector<int>>& result) {
+    void combinationSumHelper(vector<int>& candidates, int target, int start, vector<int>& path, vector<vector<int>>& result) {
         if (target == 0) {
             result.push_back(path);
             return;
@@ -29,21 +30,21 @@ private:
 
 int main() {
     Solution solution;
-    std::vector<int> candidates = {2, 3, 6, 7};
+    vector<int> candidates = {2, 3, 6, 7};
     int target = 7;
 
-    std::vector<std::vector<int>> result = solution.combinationSum(candidates, target);
+    vector<vector<int>> result = solution.combinationSum(candidates, target);
 
     // Print the result
     for (const auto& combination : result) {
-        std::cout << "[";
+        cout << "[";
         for (int i = 0; i < combination.size(); ++i) {
-            std::cout << combination[i];
+            cout << combination[i];
             if (i < combination.size() - 1) {
-                std::cout << ", ";
+                cout << ", ";
             }
         }
-        std::cout << "]" << std::endl;
+        cout << "]" << endl;
     }
 
     return 0;
